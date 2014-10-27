@@ -5,7 +5,7 @@ Programari per a gestionar les entrades i eixides de documents d'un centre educa
 
 L’aplicació Secretictac consta, en principi, de tres mòduls, que seran o no visibles en funció dels permisos assignats a cada usuari. Aquestos mòduls són:
 
-    Mòdul de Registre d’entrades / eixides al Centre: Este és el mòdul principal de l’aplicació i s’usa per a gestionar els documents d’ENTRADA / EIXIDA en l’organització. Consta de diversos menús:
+Mòdul de Registre d’entrades / eixides al Centre: Este és el mòdul principal de l’aplicació i s’usa per a gestionar els documents d’ENTRADA / EIXIDA en l’organització. Consta de diversos menús:
         Entrades: Gestió dels documents d’Entrada. Possibilitat de seleccionar l’usuari al qual va dirigit el document, si és necessari. Quan un usuari entre en l’aplicació, se li avisarà si té algun document pendent de revisió.
         Eixides: Gestió dels documents d’eixida.
         Llistats / Cerca: Permet obtindre llistats dels registres per pantalla usant diferents filtre per a això, incloent busca en l’assumpte del registre. Aquestos filtres es poden encadenar per a una busca més precisa.
