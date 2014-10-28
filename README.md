@@ -35,7 +35,8 @@ L’aplicació Secretictac consta, en principi, de tres mòduls, que seran o no 
 
 Aquesta és la FASE BETA DE SECRETICTAC. Per a comentaris, suggeriments, correcció d’errades,.... podeu posar-vos en contacte amb mi a través del fòrum d’EDUCATICTAC.
 
-== Instal·lació ==
+Instal·lació
+============
 
 **Requisits:**
 - Apache
