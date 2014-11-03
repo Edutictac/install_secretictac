@@ -17,6 +17,8 @@ L’aplicació Secretictac consta, en principi, de tres mòduls, que seran o no 
 
 - Organismes /Tipus de Documents: Permet crear i modificar el nom del Organisme, Tipus de documentos,... que usarem en aquest mòdul.
 
+Hi ha que anar en compte en la creació de Organismes, tipus de documents,... des des el formulari d'Entrades/Eixides. Quan es crea un element de aquest tipus amb el botó (+), les dades que en eixe moment estan en el formulari es queden gravades i per tant el registre també es crea. Per tant, com a que s'ha creat el registre, cal completar-ho o be s'ha de tindre en compte aquest fet per a quen es torne a entrar a la aplicació.
+
 **2. Mòdul Compartir Documents**: Mòdul per a compartir documents entre els usuaris de l’aplicació.
 
 - Pujar /compartir documents: Apartat on es gestionen els documents i carpetes que s’han de compartir. Als documents se’ls pot donar el caràcter de públic (els veuran tots els usuaris) o privats (únicament els veurà l’usuari que els ha pujat) . Les carpetes que es creuen sempre seran de caràcter públic, no així els documents.
