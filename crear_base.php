@@ -108,6 +108,7 @@ fclose($fp);
 $archivo = '../secretictac/ruta_absoluta.php';
 $fp = fopen($archivo, "w");
 $string = '<?php
+$codigo_centro_inicial="'.$codigo_centro.'";
 $ruta_absoluta="'.$ruta.'";
 ?>';
 $write = fputs($fp, $string);
@@ -169,12 +170,12 @@ if($numero5==0)
 {
 mysql_query("
 INSERT INTO registro_tipo_documento (id_tipo_documento, nombre_val, nombre_cas, cod_centro, entrada_salida) VALUES
-('030120509664af131068075341753d7849b8f443231014134551', 'Ofici ', 'Oficio', '03012050', 'd'),
-('030120509664af131068075341753d7849b8f443231014134604', 'Credencial', 'Credencial', '03012050', 'd'),
-('030120509664af131068075341753d7849b8f443231014134618', 'Comunicado', 'Comunicado', '03012050', 'd'),
-('030120509664af131068075341753d7849b8f443231014134632', 'Instruccions', 'Instrucciones', '03012050', 'd'),
-('030120509664af131068075341753d7849b8f443231014134651', 'Parte de treball', 'Parte de trabajo', '03012050', 'd'),
-('030120509664af131068075341753d7849b8f443231014134709', 'Expedient escolar', 'Expediente escolar', '03012050', 'd')");
+('030120509664af131068075341753d7849b8f443231014134551', 'Ofici ', 'Oficio', '$codigo_centro', 'd'),
+('030120509664af131068075341753d7849b8f443231014134604', 'Credencial', 'Credencial', '$codigo_centro', 'd'),
+('030120509664af131068075341753d7849b8f443231014134618', 'Comunicado', 'Comunicado', '$codigo_centro', 'd'),
+('030120509664af131068075341753d7849b8f443231014134632', 'Instruccions', 'Instrucciones', '$codigo_centro', 'd'),
+('030120509664af131068075341753d7849b8f443231014134651', 'Parte de treball', 'Parte de trabajo', '$codigo_centro', 'd'),
+('030120509664af131068075341753d7849b8f443231014134709', 'Expedient escolar', 'Expediente escolar', '$codigo_centro', 'd')");
 }
 
 $contar_organismos = "SELECT cod_centro FROM  registro_organismo where cod_centro='$codigo_centro'";
@@ -183,16 +184,16 @@ $numero6 = mysql_num_rows($result6);
 if($numero6==0)
 {
 mysql_query("INSERT INTO registro_organismo (id_organismo, nombre_val, nombre_cas, cod_centro, entrada_salida) VALUES
-('030120509664af131068075341753d7849b8f443231014134744', 'Dirección Territorial de Educación', 'Dirección Territorial de Educación', '03012050', 'e'),
-('030120509664af131068075341753d7849b8f443231014135110', 'Direcció General de Centres i Personal Docent', 'Dirección General de Centros y Personal Docente ', '03012050', 'e'),
-('030120509664af131068075341753d7849b8f443231014135133', 'Direcció General de Innovació, Ordenació i Política Lingüística ', 'Dirección General de Innovación,  Ordenación y Política lingüística ', '03012050', 'e'),
-('030120509664af131068075341753d7849b8f443231014135150', 'Alcalde/sa del Ajuntament', 'Alcalde/sa del Ayuntamiento', '03012050', 'e'),
-('030120509664af131068075341753d7849b8f443231014135211', 'Unitat de Beques de menjador', 'Unidad de Becas de comedor', '03012050', 'e'),
-('030120509664af131068075341753d7849b8f443231014135307', 'Direcció Territorial de Educació', 'Dirección Territorial de Educación', '03012050', 's'),
-('030120509664af131068075341753d7849b8f443231014135352', 'Direcció General de Centres i Personal Docent', 'Dirección General de Centros y Personal Docente', '03012050', 's'),
-('030120509664af131068075341753d7849b8f443231014135410', 'Direcció General de Innovació, Ordenació i Política Lingüística', 'Dirección General de Innovación,  Ordenación y Política lingüística', '03012050', 's'),
-('030120509664af131068075341753d7849b8f443231014135424', 'Alcalde/sa del Ajuntament', 'Alcalde/sa del Ayuntamiento', '03012050', 's'),
-('030120509664af131068075341753d7849b8f443231014135438', 'Unitat de Beques de menjador', 'Unidad de Becas de comedor', '03012050', 's')");
+('030120509664af131068075341753d7849b8f443231014134744', 'Dirección Territorial de Educación', 'Dirección Territorial de Educación', '$codigo_centro', 'e'),
+('030120509664af131068075341753d7849b8f443231014135110', 'Direcció General de Centres i Personal Docent', 'Dirección General de Centros y Personal Docente ', '$codigo_centro', 'e'),
+('030120509664af131068075341753d7849b8f443231014135133', 'Direcció General de Innovació, Ordenació i Política Lingüística ', 'Dirección General de Innovación,  Ordenación y Política lingüística ', '$codigo_centro', 'e'),
+('030120509664af131068075341753d7849b8f443231014135150', 'Alcalde/sa del Ajuntament', 'Alcalde/sa del Ayuntamiento', '$codigo_centro', 'e'),
+('030120509664af131068075341753d7849b8f443231014135211', 'Unitat de Beques de menjador', 'Unidad de Becas de comedor', '$codigo_centro', 'e'),
+('030120509664af131068075341753d7849b8f443231014135307', 'Direcció Territorial de Educació', 'Dirección Territorial de Educación', '$codigo_centro', 's'),
+('030120509664af131068075341753d7849b8f443231014135352', 'Direcció General de Centres i Personal Docent', 'Dirección General de Centros y Personal Docente', '$codigo_centro', 's'),
+('030120509664af131068075341753d7849b8f443231014135410', 'Direcció General de Innovació, Ordenació i Política Lingüística', 'Dirección General de Innovación,  Ordenación y Política lingüística', '$codigo_centro', 's'),
+('030120509664af131068075341753d7849b8f443231014135424', 'Alcalde/sa del Ajuntament', 'Alcalde/sa del Ayuntamiento', '$codigo_centro', 's'),
+('030120509664af131068075341753d7849b8f443231014135438', 'Unitat de Beques de menjador', 'Unidad de Becas de comedor', '$codigo_centro', 's')");
 
 }
 
