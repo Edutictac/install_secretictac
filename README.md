@@ -37,6 +37,10 @@ Hi ha que anar en compte en la creació de Organismes, tipus de documents,... de
 
 Aquesta és la FASE BETA DE SECRETICTAC. Per a comentaris, suggeriments, correcció d’errades,.... podeu posar-vos en contacte amb mi a través del fòrum d’EDUCATICTAC.
 
+**5. Gestió d'actes**
+
+- Pròximament afegirem un mòdul per a gestionar les actes del centre.
+
 Instal·lació
 ============
 
@@ -56,3 +60,5 @@ L'únic que hem fet per instalar secretictac:
 - Omplir tots els camps (cura amb les majuscules i minuscules). S'ha de saber la contrasenya i usuari de la base de dades (molt important).
 
 Una vegada instal·lat, cal anar a la secció de ADMINISTRADOR i després a la configuració Inicial per posar les dades del secretari i dir-li a la aplicació l'últim registre. Si es vol començar pel primer, deixar el 0.
+
+Visiteu les instruccions detallades del wiki per a més informació https://github.com/Edutictac/install_secretictac/wiki/Instal%C2%B7laci%C3%B3
