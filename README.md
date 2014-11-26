@@ -37,7 +37,7 @@ Hi ha que anar en compte en la creació de Organismes, tipus de documents,... de
 
 Aquesta és la FASE BETA DE SECRETICTAC. Per a comentaris, suggeriments, correcció d’errades,.... podeu posar-vos en contacte amb mi a través del fòrum d’EDUCATICTAC.
 
-**5. Gestió d'actes**
+**4. Gestió d'actes**
 
 - Pròximament afegirem un mòdul per a gestionar les actes del centre.
 
