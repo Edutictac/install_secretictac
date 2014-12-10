@@ -213,9 +213,10 @@ $result3 = mysql_query($contar_permisos_usuario);
 $numero3 = mysql_num_rows($result3);	
 if($numero3==0)
 {
-mysql_query("INSERT INTO 1_permisos (id_tipo, cod_centro, administrador, tipo_permisos, permisos, crear_usuarios, definir_centro, subir_documentos, compartir_documentos, modificar_documentos, entradas, salidas, listados, configuracion, registro, imprimir_libros) VALUES
-('1', '$codigo_centro', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1')");
+mysql_query("INSERT INTO 1_permisos (id_tipo, cod_centro, administrador, tipo_permisos, permisos, crear_usuarios, definir_centro, subir_documentos, compartir_documentos, modificar_documentos, entradas, salidas, listados, configuracion, registro, imprimir_libros, actas, crear_actas, listado_actas, redactar_actas, busqueda_actas, convocatorias_actas) VALUES
+('1', '$codigo_centro', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1')");
 }
+
 
 
 echo "<script>alert('$iniciotexto7');</script>";

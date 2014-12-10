@@ -1,5 +1,4 @@
 <?php
-
 mysql_query ("CREATE TABLE IF NOT EXISTS 1_centro (
   COD_CENTRO varchar(10) DEFAULT NULL,
   PAGADO varchar(2) DEFAULT NULL,
@@ -52,7 +51,13 @@ mysql_query ("CREATE TABLE IF NOT EXISTS 1_permisos (
   listados varchar(1) NOT NULL,
   configuracion varchar(1) NOT NULL,
   registro varchar(1) NOT NULL,
-  imprimir_libros varchar(1) NOT NULL
+  imprimir_libros varchar(1) NOT NULL,
+  actas varchar(1) NOT NULL,
+  crear_actas varchar(1) NOT NULL,
+  listado_actas varchar(1) NOT NULL,
+  redactar_actas varchar(1) NOT NULL,
+  busqueda_actas varchar(1) NOT NULL,
+  convocatorias_actas varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8");
 
 // ////////////////////////////////////////////////////////
@@ -65,6 +70,129 @@ mysql_query ("CREATE TABLE IF NOT EXISTS 1_tipos_permisos (
   id_tipo varchar(500) NOT NULL,
   tipo varchar(255) NOT NULL,
   cod_centro varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8");
+
+// ////////////////////////////////////////////////////////
+
+//
+// Estructura de tabla para la tabla actas
+//
+
+mysql_query ("CREATE TABLE IF NOT EXISTS actas (
+  id_acta varchar(200) NOT NULL,
+  texto text NOT NULL,
+  acuerdos text NOT NULL,
+  fecha date NOT NULL,
+  id_tipo_acta varchar(500) NOT NULL,
+  cod_centro varchar(20) NOT NULL,
+  anyo varchar(4) NOT NULL,
+  PRIMARY KEY (id_acta),
+  FULLTEXT KEY BUSQUEDA (texto)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8");
+
+// ////////////////////////////////////////////////////////
+
+//
+// Estructura de tabla para la tabla actas_asistentes
+//
+
+mysql_query ("CREATE TABLE IF NOT EXISTS actas_asistentes (
+  id_tipo_acta varchar(500) NOT NULL,
+  id_asistente varchar(500) NOT NULL,
+  nombre_asistente varchar(200) NOT NULL,
+  tipo_asistente varchar(500) NOT NULL,
+  cod_centro varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8");
+
+// ////////////////////////////////////////////////////////
+
+//
+// Estructura de tabla para la tabla actas_convocatorias
+//
+
+mysql_query ("CREATE TABLE IF NOT EXISTS actas_convocatorias (
+  id_convocatoria varchar(200) NOT NULL,
+  texto_cas text NOT NULL,
+  texto_val text NOT NULL,
+  fecha date NOT NULL,
+  id_tipo_acta varchar(500) NOT NULL,
+  cod_centro varchar(20) NOT NULL,
+  anyo varchar(4) NOT NULL,
+  fecha_convocatoria date NOT NULL,
+  PRIMARY KEY (id_convocatoria),
+  FULLTEXT KEY BUSQUEDA (texto_cas)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8");
+
+// ////////////////////////////////////////////////////////
+
+//
+// Estructura de tabla para la tabla actas_firmas
+//
+
+mysql_query ("CREATE TABLE IF NOT EXISTS actas_firmas (
+  id_tipo_acta varchar(500) NOT NULL,
+  id_firma varchar(500) NOT NULL,
+  cod_centro varchar(20) NOT NULL,
+  id_tipo_asistente varchar(500) NOT NULL,
+  orden int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8");
+
+// ////////////////////////////////////////////////////////
+
+//
+// Estructura de tabla para la tabla actas_permisos
+//
+
+mysql_query ("CREATE TABLE IF NOT EXISTS actas_permisos (
+  id_tipo_acta varchar(500) NOT NULL,
+  id_tipo_permisos varchar(500) NOT NULL,
+  cod_centro varchar(20) NOT NULL,
+  nombre_permiso varchar(250) NOT NULL,
+  id_permiso varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8");
+
+// ////////////////////////////////////////////////////////
+
+//
+// Estructura de tabla para la tabla actas_tipo_acta
+//
+
+mysql_query ("CREATE TABLE IF NOT EXISTS actas_tipo_acta (
+  id_tipo varchar(500) NOT NULL,
+  nombre_cas varchar(100) NOT NULL,
+  nombre_val varchar(100) NOT NULL,
+  cod_centro varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8");
+
+// ////////////////////////////////////////////////////////
+
+//
+// Estructura de tabla para la tabla actas_tipo_asistentes
+//
+
+mysql_query ("CREATE TABLE IF NOT EXISTS actas_tipo_asistentes (
+  id_tipo varchar(500) NOT NULL,
+  nombre_cas varchar(100) NOT NULL,
+  nombre_val varchar(100) NOT NULL,
+  cod_centro varchar(20) NOT NULL,
+  orden int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8");
+
+// ////////////////////////////////////////////////////////
+
+//
+// Estructura de tabla para la tabla acta_asistentes_reunion
+//
+
+mysql_query ("CREATE TABLE IF NOT EXISTS acta_asistentes_reunion (
+  id_actas varchar(500) NOT NULL,
+  id_asistente varchar(500) NOT NULL,
+  nombre varchar(300) NOT NULL,
+  nombre_cargo_cas varchar(200) NOT NULL,
+  nombre_cargo_val varchar(200) NOT NULL,
+  id_tipo_asistente varchar(500) NOT NULL,
+  orden_asistente int(2) NOT NULL,
+  cod_centro varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8");
 
 // ////////////////////////////////////////////////////////
@@ -195,6 +323,5 @@ mysql_query ("CREATE TABLE IF NOT EXISTS usuarios (
   tel2 varchar(9) NOT NULL,
   direccion varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT");
-
 
 ?>
