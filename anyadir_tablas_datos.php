@@ -27,7 +27,7 @@ mysql_query ("CREATE TABLE IF NOT EXISTS 1_centro (
   tipo_registro varchar(1) NOT NULL,
   inicio_entradas int(11) NOT NULL,
   inicio_salidas int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8");
+) ENGINE=InnoDB DEFAULT  CHARSET=utf8");
 
 // ////////////////////////////////////////////////////////
 
@@ -57,8 +57,9 @@ mysql_query ("CREATE TABLE IF NOT EXISTS 1_permisos (
   listado_actas varchar(1) NOT NULL,
   redactar_actas varchar(1) NOT NULL,
   busqueda_actas varchar(1) NOT NULL,
-  convocatorias_actas varchar(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8");
+  convocatorias_actas varchar(1) NOT NULL,
+  copies_seguretat varchar(1) NOT NULL
+) ENGINE=InnoDB DEFAULT  CHARSET=utf8");
 
 // ////////////////////////////////////////////////////////
 
@@ -70,7 +71,7 @@ mysql_query ("CREATE TABLE IF NOT EXISTS 1_tipos_permisos (
   id_tipo varchar(500) NOT NULL,
   tipo varchar(255) NOT NULL,
   cod_centro varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8");
+) ENGINE=InnoDB DEFAULT  CHARSET=utf8");
 
 // ////////////////////////////////////////////////////////
 
@@ -88,7 +89,7 @@ mysql_query ("CREATE TABLE IF NOT EXISTS actas (
   anyo varchar(4) NOT NULL,
   PRIMARY KEY (id_acta),
   FULLTEXT KEY BUSQUEDA (texto)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8");
+) ENGINE=MyISAM DEFAULT  CHARSET=utf8");
 
 // ////////////////////////////////////////////////////////
 
@@ -102,7 +103,7 @@ mysql_query ("CREATE TABLE IF NOT EXISTS actas_asistentes (
   nombre_asistente varchar(200) NOT NULL,
   tipo_asistente varchar(500) NOT NULL,
   cod_centro varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8");
+) ENGINE=InnoDB DEFAULT  CHARSET=utf8");
 
 // ////////////////////////////////////////////////////////
 
@@ -121,7 +122,7 @@ mysql_query ("CREATE TABLE IF NOT EXISTS actas_convocatorias (
   fecha_convocatoria date NOT NULL,
   PRIMARY KEY (id_convocatoria),
   FULLTEXT KEY BUSQUEDA (texto_cas)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8");
+) ENGINE=MyISAM DEFAULT  CHARSET=utf8");
 
 // ////////////////////////////////////////////////////////
 
@@ -134,8 +135,9 @@ mysql_query ("CREATE TABLE IF NOT EXISTS actas_firmas (
   id_firma varchar(500) NOT NULL,
   cod_centro varchar(20) NOT NULL,
   id_tipo_asistente varchar(500) NOT NULL,
-  orden int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8");
+  orden int(2) NOT NULL,
+  firma_convocatoria varchar(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT  CHARSET=utf8");
 
 // ////////////////////////////////////////////////////////
 
@@ -149,7 +151,7 @@ mysql_query ("CREATE TABLE IF NOT EXISTS actas_permisos (
   cod_centro varchar(20) NOT NULL,
   nombre_permiso varchar(250) NOT NULL,
   id_permiso varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8");
+) ENGINE=InnoDB DEFAULT  CHARSET=utf8");
 
 // ////////////////////////////////////////////////////////
 
@@ -161,8 +163,10 @@ mysql_query ("CREATE TABLE IF NOT EXISTS actas_tipo_acta (
   id_tipo varchar(500) NOT NULL,
   nombre_cas varchar(100) NOT NULL,
   nombre_val varchar(100) NOT NULL,
-  cod_centro varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8");
+  cod_centro varchar(20) NOT NULL,
+  encabezado_acta varchar(1) NOT NULL,
+  encabezado_convocatoria varchar(1) NOT NULL
+) ENGINE=InnoDB DEFAULT  CHARSET=utf8");
 
 // ////////////////////////////////////////////////////////
 
@@ -176,7 +180,7 @@ mysql_query ("CREATE TABLE IF NOT EXISTS actas_tipo_asistentes (
   nombre_val varchar(100) NOT NULL,
   cod_centro varchar(20) NOT NULL,
   orden int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8");
+) ENGINE=InnoDB DEFAULT  CHARSET=utf8");
 
 // ////////////////////////////////////////////////////////
 
@@ -193,7 +197,34 @@ mysql_query ("CREATE TABLE IF NOT EXISTS acta_asistentes_reunion (
   id_tipo_asistente varchar(500) NOT NULL,
   orden_asistente int(2) NOT NULL,
   cod_centro varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8");
+) ENGINE=InnoDB DEFAULT  CHARSET=utf8");
+
+// ////////////////////////////////////////////////////////
+
+//
+// Estructura de tabla para la tabla copies_arxius
+//
+
+mysql_query ("CREATE TABLE IF NOT EXISTS copies_arxius (
+  id_arxiu varchar(500) NOT NULL,
+  nom varchar(255) NOT NULL,
+  data datetime NOT NULL,
+  cod_centro varchar(20) NOT NULL,
+  nom_arxius varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT  CHARSET=utf8");
+
+// ////////////////////////////////////////////////////////
+
+//
+// Estructura de tabla para la tabla copies_carpeta
+//
+
+mysql_query ("CREATE TABLE IF NOT EXISTS copies_carpeta (
+  id_carpeta varchar(500) NOT NULL,
+  ruta varchar(500) NOT NULL,
+  cod_centro varchar(20) NOT NULL,
+  numero_copies varchar(3) NOT NULL
+) ENGINE=InnoDB DEFAULT  CHARSET=utf8");
 
 // ////////////////////////////////////////////////////////
 
@@ -214,7 +245,7 @@ mysql_query ("CREATE TABLE IF NOT EXISTS documentos_compartidos (
   privada varchar(2) NOT NULL,
   usuario varchar(20) NOT NULL,
   tipo_archivo varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8");
+) ENGINE=InnoDB DEFAULT  CHARSET=utf8");
 
 // ////////////////////////////////////////////////////////
 
@@ -244,7 +275,7 @@ mysql_query ("CREATE TABLE IF NOT EXISTS registro (
   nombre_archivo text NOT NULL,
   KEY PRIMARIO (id_registro),
   FULLTEXT KEY BUSQUEDA (asunto,observaciones,nombre_archivo)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8");
+) ENGINE=MyISAM DEFAULT  CHARSET=utf8");
 
 // ////////////////////////////////////////////////////////
 
@@ -258,7 +289,7 @@ mysql_query ("CREATE TABLE IF NOT EXISTS registro_destino (
   nombre_cas varchar(255) NOT NULL,
   cod_centro varchar(20) NOT NULL,
   entrada_salida varchar(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8");
+) ENGINE=InnoDB DEFAULT  CHARSET=utf8");
 
 // ////////////////////////////////////////////////////////
 
@@ -272,7 +303,7 @@ mysql_query ("CREATE TABLE IF NOT EXISTS registro_organismo (
   nombre_cas varchar(255) NOT NULL,
   cod_centro varchar(20) NOT NULL,
   entrada_salida varchar(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8");
+) ENGINE=InnoDB DEFAULT  CHARSET=utf8");
 
 // ////////////////////////////////////////////////////////
 
@@ -286,7 +317,7 @@ mysql_query ("CREATE TABLE IF NOT EXISTS registro_origen (
   nombre_cas varchar(255) NOT NULL,
   cod_centro varchar(20) NOT NULL,
   entrada_salida varchar(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8");
+) ENGINE=InnoDB DEFAULT  CHARSET=utf8");
 
 // ////////////////////////////////////////////////////////
 
@@ -300,7 +331,7 @@ mysql_query ("CREATE TABLE IF NOT EXISTS registro_tipo_documento (
   nombre_cas varchar(255) NOT NULL,
   cod_centro varchar(20) NOT NULL,
   entrada_salida varchar(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8");
+) ENGINE=InnoDB DEFAULT  CHARSET=utf8");
 
 // ////////////////////////////////////////////////////////
 
