@@ -98,6 +98,7 @@ function conectar()
 {
 	mysql_connect("localhost",'.'"'.$usuario.'"'.', "'.$contrasenya_mysql.'");
 	mysql_select_db('.'"'.$base_datos.'");
+	mysql_query("SET NAMES 'utf8'");
 }
 
 function desconectar()
